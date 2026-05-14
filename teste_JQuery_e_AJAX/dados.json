@@ -1,0 +1,8 @@
+{
+    "mensagem": "olá do nosso servidor simulado (JSON)",
+    "alunos": [
+        {"ide": 1, "nome": "Ana"},
+        {"ide": 2, "nome": "Bruno"},
+        {"ide": 3, "nome": "Carla"}
+    ]
+}

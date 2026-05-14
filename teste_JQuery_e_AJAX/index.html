@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo JQuery e AJAX (sem java)</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <style>
+        body{font-family: Arial, sans-serif; margin: 20px;}
+
+        #resultado {margin-top: 15px; padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; min-height: 50px;}
+
+        #listaAlunos {list-style-type: none; padding-left: 0;}
+
+        #listeAlunos li{background-color: #eee; margin-top: 5px; padding: 8px;}         
+    </style>
+
+</head>
+<body>
+    <h2>Demonstração AJAX com JQuery</h2>
+
+    <p>Clique no botão para busca dados de um arquivo
+        <code>dados.json</code>local
+    </p>
+
+    <button id="btnBuscar">Buscar dados via AJAX</button>
+
+    <div id="resultado"> </div>
+
+    <ul id="listaAlunos"> </ul>
+
+    <script>
+        //Espera o documento estar pronto
+        $(document).ready(function(){
+
+            //Adiciona um "ouvinte" de clique no nosso botão
+            $("#btnBuscar").click(function(){
+
+                //Limpa resiltados anterios
+                $("#resultado").html("Buscando dados no servidor...")
+
+                //Limpa a lista
+                $("#listaAlunos").empty()
+
+                //Inicia a chamada AJAX
+                $.ajax({
+
+                    //o arquivo que simula o backend
+                    url:'dados.json',
+
+                    //Apenas bucsca
+                    type:'GET',
+
+                    //Informa ao JQuer que esperamos um JSON
+                    dataType:'json',
+
+                    //"Resposta" é um objeto javascript que o JQuery já converteu pelo dataType
+                    success: function(resposta){
+
+                        var mensagemFormatada ="<strong>Mensagem:</strong>" + resposta.mensagem
+
+                        $("#resultado").html(mensagemFormatada)
+
+                        //Processa a lista de alunos
+                        var alunos = resposta.alunos;
+
+                        if(alunos && alunos.length > 0){
+
+                            //Itera a lista de alunos
+                            alunos.forEach(function(aluo){
+                                var itemLista = "<li>:" +aluno.id - "Nome: " + aluno.nome+"</li>"
+
+                                $("listaAlunos").append(itemLista);
+                            } )
+                        }
+                    },
+                    error: function(xhr, status, error){
+                        var msgError ="<strong>Erro ao buscar dados</strong>" + error+ "</strong>"
+
+                        msgError += "Verefique se aequivo 'dados.json'"
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>
