@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+</head>
+<body>
+    <h1>Mini Contador de Cliques</h1>
+
+    <p>Itens adicionados:
+        <span id="contador">0</span>
+    </p>
+
+    <button id="btn-adicionar">Adicionar Item</button>
+
+    <div id="lista-container"></div>
+
+    <script>
+        const botao = document.getElementById('btn-adicionar');
+        const container = document.getElementById('lista-container');
+        const contadorSpan = document.getElementById('contador');
+
+        // criar uma variavel para guardar a contagem
+        let numeroDeItens = 0;
+
+        botao.addEventListener('click', function(){
+
+            // incrementa o contador
+            numeroDeItens++;
+
+            contadorSpan.textContent = numeroDeItens;
+
+            // criar um novo elemento <p>
+            const novoParagrafo = document.createElement('p');
+
+            // define o texto do novo elemento
+            novoParagrafo.textContent = 'Este é o item número' + numeroDeItens
+
+            //adiciona o novo paragrafo dentro da <div>
+            container.appendChild(novoParagrafo);
+        });
+    </script>
+</body>
+</html>

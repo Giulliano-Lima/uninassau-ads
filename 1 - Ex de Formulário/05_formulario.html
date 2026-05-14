@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Academia de Heróis - Form de Inscrição</title>
+    <link rel="stylesheet" href="06_styles.css" />
+  </head>
+  <body>
+    <h1>Formulário de Inscrição para a Academia de Super-Heróis</h1>
+    <h2>Preencha seus dados com cuidado!</h2>
+
+    <form>
+        <fieldset>
+            <legend><strong>Identidade Secreta e Pública</strong></legend>
+            <label for="name_heroi">Nome de Herói:</label><br>
+            <input
+               type="text"
+               name="nome_heroi"
+               required
+               minlength="4"
+               placeholder="Ex: Incrível Hulk"
+             />
+            <br>
+            </br>
+            <label for="identidade_secreta">Identidade Secreta:</label><br>
+            <input
+               type="password"
+               name="identidade_secreta"
+               required
+               minlength="8"
+               placeholder="Mínimo 8 caracteres"
+            />
+           <br>
+           </br>
+           <label for="telefone">Telefone (sinal de Emergência):</label>
+           <input
+              type="tel"
+              name="telefone"
+              placeholder="(00) 90000-0000"
+              pattern="\(\d{2}\) \d{5}-\d{4}"
+           />
+       </fieldset>
+
+       <fieldset>
+          <legend><strong>Poder e Habilidades</strong></legend>
+          <p><strong>Alinhamento:</strong></p>
+          <input type="radio" name="alinhamento" value="heroi" required/>
+          <label for="heroi">Herói</label><br>
+          <input type="radio" name="alinhamento" value="anti-heroi"/>
+          <label for="anti-heroi">Anti-Herói</label><br>
+          <input type="radio" name="alinhamento" value="vilao-arrependido"/>
+          <label for="vilao-arrependido">Vilão Arrependido</label>
+
+          
+          <p><strong>Principais Poderes:</strong></p>
+          <input type="checkbox" name="poderes" id="poder1"/>
+          <label for="poder1">Super Força</label>
+          <input type="checkbox" name="poderes" id="poder2"/>
+          <label for="poder2">Voo</label>
+          <input type="checkbox" name="poderes" id="poder3"/>
+          <label for="poder3">Telepatia</label>
+          <input type="checkbox" name="poderes" id="poder4"/>
+          <label for="poder4">Invisibilidade</label>
+          <br>
+          </br>
+
+          <label for="nivel_poder">Nível de Poder(1 a 10):</label> <br>
+          <input type="range" name="nive_poder" min="1" max="10" value="5"/>
+          <br>
+          </br>
+
+          <label for="planeta_origem">Planeta Origem:</label><br>
+          <select name="planeta_origem" required>
+              <option value="">Selecione...</option>
+              <option value="terra">Terra</option>
+              <option value="krypton">Krypton</option>
+              <option value="asgard">Asgard</option>
+              <option value="xandar">Xandar</option>
+              <option value="outro">Outro</option>
+       </fieldset>
+    </form>
+  </body>
+</html>
